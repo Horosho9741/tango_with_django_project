@@ -1,4 +1,5 @@
 import os
+import random
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 'tango_with_django_project.settings')
 
@@ -15,24 +16,32 @@ def populate():
 
     python_pages = [
         {'title': 'Official Python Tutorial',
-        'url':'http://docs.python.org/3/tutorial/'},
+        'url':'http://docs.python.org/3/tutorial/',
+        'views':800},
         {'title':'How to Think like a Computer Scientist',
-        'url':'http://www.greenteapress.com/thinkpython/'},
+        'url':'http://www.greenteapress.com/thinkpython/',
+        'views':700},
         {'title':'Learn Python in 10 Minutes',
-        'url':'http://www.korokithakis.net/tutorials/python/'} ]
+        'url':'http://www.korokithakis.net/tutorials/python/',
+        'views':600} ]
 
     django_pages = [ {'title':'Official Django Tutorial',
-         'url':'https://docs.djangoproject.com/en/2.1/intro/tutorial01/'},
-         {'title':'Django Rocks',
-         'url':'http://www.djangorocks.com/'},
-         {'title':'How to Tango with Django',
-         'url':'http://www.tangowithdjango.com/'} ]
+        'url':'https://docs.djangoproject.com/en/2.1/intro/tutorial01/',
+        'views':500},
+        {'title':'Django Rocks',
+        'url':'http://www.djangorocks.com/',
+        'views':400},
+        {'title':'How to Tango with Django',
+        'url':'http://www.tangowithdjango.com/',
+        'views':300} ]
 
     other_pages = [
-         {'title':'Bottle',
-         'url':'http://bottlepy.org/docs/dev/'},
-         {'title':'Flask',
-         'url':'http://flask.pocoo.org'} ]
+        {'title':'Bottle',
+        'url':'http://bottlepy.org/docs/dev/',
+        'views':200},
+        {'title':'Flask',
+        'url':'http://flask.pocoo.org',
+        'views':100} ]
 
     cats = {'Python': {'pages': python_pages},
             'Django': {'pages': django_pages},
@@ -57,7 +66,7 @@ def populate():
             likes = 16
         c = add_cat(cat,views,likes)
         for p in cat_data['pages']:
-            add_page(c, p['title'], p['url'])
+            add_page(c, p['title'], p['url'], p['views'])
 
     # Print out the categories we have added.
     for c in Category.objects.all():
